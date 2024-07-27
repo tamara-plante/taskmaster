@@ -1,0 +1,47 @@
+7/9
+Wireframe done for the login/sign up and to-do list.
+
+7/10
+Mockup done for the login/sign up. Designed the logo since we decided on the name TaskMaster.
+
+7/11
+Helped with the to-do list mockup. Built the html, css for the login page.
+
+7/12
+Updated the login page, add the sign up page and rework the contact us button and the logo layout on mobile.
+
+7/13
+Complete the register page. Implemented the FatFree Framework and added login and register to it. The forms are set for the database.
+
+7/15
+Added logout behavior.
+
+7/16
+Add create list and make the basic todo list framework.
+
+7/17
+Add list selection and task display for the selected list.
+
+7/18
+Add create the tasks elements and completing them.
+
+7/19
+Fix some css and add delete task, add edit list title and make small adjustments in the todo list behaviors.
+
+7/20
+Plug in mode and priority filter, add beforeRoute, correct mistake between session/cookie for sensitive data.
+
+7/21
+Convert toggle task and delete task to frontend for smoother behavior. Update scrolls and other bootstrap issues.
+
+7/22
+Focused on refining the frontend and fixing issues.
+
+7/23
+Add order by due date, add task through the frontend, support edit task. Add active task count.
+
+7/24
+Add list order. Add missing documentation, clean up code. Add database validations.
+
+7/25
+Clean up code, add recent list. Add confirm delete list. Add database validations.

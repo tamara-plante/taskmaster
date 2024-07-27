@@ -1,0 +1,68 @@
+<!-- Branding -->
+<div id="logo" class="text-center">
+    <img src="images/logo-image.svg" alt="logo image taskmaster">
+    <img src="images/logo-text.svg" alt="logo text taskmaster">
+</div>
+<hr class="mb-2">
+<h2>Sign up</h2>
+
+<!-- Error messages -->
+<div id="error-msg" class="alert alert-warning my-2 py-auto">{{ "<br>", @errors | implode }}</div>
+
+<!-- Form: Sign up -->
+<form id="register" method="POST" action="">
+
+    <!-- Input: Username -->
+    <div class="form-group mb-3">
+        <label for="username" class="form-label m-0">Username</label>
+        <input 
+            type="text" 
+            id="username" 
+            name="username" 
+            class="form-control" 
+            placeholder="Enter a username" 
+            value="{{ isset(@username) ? @username : '' }}" 
+            required>
+    </div>
+    
+    <!-- Input: Email -->
+    <div class="form-group mb-3">
+        <label for="email" class="form-label m-0">Email</label>
+        <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            class="form-control" 
+            placeholder="Enter your email" 
+            value="{{ isset(@email) ? @email : '' }}" 
+            required>
+    </div>
+
+    <!-- Input: Password -->
+    <div class="form-group mb-3">
+        <label for="password" class="form-label m-0">Password</label>
+        <input 
+            type="password" 
+            id="password" 
+            name="password" 
+            class="form-control"
+            placeholder="Enter a password" 
+            required>
+    </div>
+    <!-- Input: Password -->
+    <div class="form-group mb-3">
+        <label for="password-confirm" class="form-label m-0">Confirm Password</label>
+        <input 
+            type="password" 
+            id="password-confirm" 
+            name="password-confirm" 
+            class="form-control"
+            placeholder="Confirm the password" 
+            required>
+    </div>
+
+    <button type="submit" class="w-100 mt-3 mb-2 p-2">Create account</button>
+</form>    
+
+<!-- Log in -->
+<p>Already have an account? <a href="{{ @BASE }}{{ 'home' | alias }}">Log in.</a></p>

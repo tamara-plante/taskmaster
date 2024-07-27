@@ -1,0 +1,217 @@
+/*
+    Tasks container
+*/
+#tasks-container {
+    height: 50vh;
+}
+#tasks-container ul {
+    list-style-type: none; 
+    padding-left: 0;
+    height: 100%;
+}
+#tasks-container ul.scrollbar {
+    /* Firefox, chrome, edge */
+    scrollbar-color: #ccced6 #F3F3F3;
+}
+/* Safari and others */
+#tasks-container ul.scrollbar::-webkit-scrollbar {
+    background-color: #ccced6;
+}
+
+#tasks-container li {
+    min-height: 50px;
+}
+/* Left section, markers */
+#tasks-container li > div:first-of-type {
+    position: relative;
+    width: 80px;
+}
+/* Right section, edit/delete */
+#tasks-container li > div:last-of-type {
+    position: relative;
+    width: 150px;
+    visibility: hidden;
+}
+/* Display Right section when li is hover */
+#tasks-container li:hover > div:last-of-type {
+    visibility: visible;
+}
+
+
+
+/*
+    Individual task components
+*/
+
+.task-content {
+    font-size: 1.25rem;
+}
+.task-content:hover {
+    cursor: pointer;
+}
+.task-content.completed {
+    text-decoration: line-through;
+}
+/*
+    Left of task: Checkmark and priority
+*/
+.marker {
+    display: none;
+    position: absolute;
+    top: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5rem;
+}
+.checkmark {
+    color: #00D878;
+}
+.checkmark.completed,
+.priority:not(.completed) {
+    display: block;
+}
+.priority-0 {
+    display: none !important; /* only this time, for explicity */
+}
+.priority-1 {
+    color: orange;
+}
+.priority-2 {
+    color: orangered;
+}
+/*
+    Right of task: Edit and delete
+*/
+.task-icon {
+    color: black;
+    font-size: 1.3rem;
+    border: 0;
+    outline: none;
+}
+.task-edit {
+    position: absolute;
+    left: 0;
+}
+.task-edit.completed {
+    display: none;
+}
+.task-delete {
+    position: absolute;
+    right: 25px;
+}
+/*
+    Bottom of task: Due date
+*/
+.task-date.due-date {
+    display: flex;
+    background-color: #394a6d;
+    color: white;
+    width: 115px;
+    height: 30px;
+    font-size: 0.875rem;
+}
+.task-date.completed,
+.task-date:not(.due-date) {
+    display: none;
+}
+
+/*
+    The add task dialog
+*/
+#task-add-dialog {
+    position: absolute; 
+    left: 0; 
+    bottom: 0; 
+    /*height: 275px;*/
+}
+#task-add-dialog textarea {
+    resize: none;
+}
+
+#task-add-form {
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    z-index: 1;
+    display: none;
+    height: 175px;
+    background-color: #E1E2E6;
+    transform: translateX(-50%);
+}
+#task-add-form label {
+    background-color: rgba(1, 151, 188, 0.1);
+}
+#task-add-form button[type=submit] {
+    height: 40px;
+    width: 40px;
+    font-size: 0.9rem;
+}
+/*
+    Toggle add / edit state for
+    the task-add-form
+*/
+#task-add-form button[type=submit] .edit,
+#task-add-form.edit button[type=submit] .add {
+    display: none;
+}
+#task-add-form.edit button[type=submit] .edit {
+    display: block;
+}
+
+#task-add-form input[type=reset] {
+    height: 40px;
+    width: 40px;
+    background-color: gray;
+    font-size: 1rem;
+}
+#task-add-priority {
+    width: 40%;
+}
+#task-add-due-date {
+    width: 60%;
+}
+#task-add-content {
+    max-height: 50px;
+}
+
+/*
+    Button to add task
+*/
+#task-add-btn {
+    /* Position based on .content */
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    font-size: 1.2rem;
+    transform: translateX(-50%);
+}
+/* 
+    Toggle add form btn
+    between open / close state
+*/
+#task-add-btn.hide {
+    background-color: #394a6d;
+}
+#task-add-btn .close,
+#task-add-btn.hide .open {
+    display: none;
+}
+#task-add-btn.hide .close {
+    display: block;
+}
+
+/*
+    The active task indicator
+*/
+#task-active-count {
+    position: absolute; 
+    right: 0; 
+    bottom: 20px;
+    height: 50px; 
+    min-width: 70px;
+    max-width: 150px;
+    background-color: rgba(1, 151, 188, 0.2);
+    border-radius: 10px 0 0 10px;
+    font-size: 1.2rem;
+    color: #394a6d;
+}

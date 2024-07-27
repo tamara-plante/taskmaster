@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..700;1,100..700&display=swap');
+
+/*  
+
+styling reset  
+
+*/
+* {
+    /*box-sizing: border-box;*/
+    padding: 0;
+    margin: 0;
+    font-family: "Exo", Arial, Helvetica, sans-serif;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+h1 {
+    font-weight: 700;
+}
+
+h2 {
+    font-weight: 600;
+}
+
+h3 {
+    font-style: italic;
+}
+
+/*
+    Fake highlight on clickables
+*/
+button:hover,
+button:active,
+a[role=button]:hover,
+a[role=button]:active,
+input[type=submit]:hover,
+input[type=submit]:active,
+input[type=reset]:hover,
+input[type=reset]:active {
+    cursor: pointer;
+    box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.1);
+}
+
+/*
+    Horizontal logo, 1-image, 2-text
+    need to set the width of the parent div with class horizontal-logo.
+*/
+.horizontal-logo img:nth-of-type(1) {
+    width: 20%;
+}
+
+.horizontal-logo img:nth-of-type(2) {
+    width: 78%;
+}
+
+/* header */
+header {
+    /*margin-bottom: 20px;*/
+    /*background-color: rgba(217, 217, 217, 0.5);*/
+}
+
+header nav a {
+    text-decoration: none;
+    color: black;
+    transition: color 0.3s ease;
+}
+
+header nav span {
+    font-weight: bold;
+}
+
+.navbar {
+    height: 80px;
+    background-color: rgba(217, 217, 217, 0.8);
+
+}
+
+.horizontal-logo {
+    width: 245px;
+}
+
+.nav-link {
+    color: black;
+}
+
+.nav-link:hover {
+    color: #0197BC;
+}
+
+.nav-link.active {
+    font-weight: 700;
+    color: #0197BC !important;
+}
+
+.navbar-logo {
+    height: 50px;
+}
+
+.navbar-logo-text {
+    height: 30px;
+}
+
+.profile-icon img {
+    width: 40px;
+    height: 40px;
+}
+
+.profile-icon {
+    position: relative;
+    display: inline-block;
+}
+
+/* dropdown */
+.dropdown-menu {
+    min-width: 10rem;
+    top: 100%;
+    left: 30%;
+    transform: translateX(-50%);
+    transition: all .5s ease;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu a:hover {
+    background-color: rgb(235, 235, 235);
+}
+
+.navbar .dropdown-menu {
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s, visibility 0.5s;
+}
+
+.navbar .dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+}
+
+#delete-account-mobile,
+#delete-account-desktop {
+    color: rgb(255, 0, 0);
+}
+
+/* avatar */
+.avatar-wrapper {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    overflow: hidden;
+    display: inline-block;
+    border: 2px solid #ccc;
+}
+
+.avatar-circle {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* SCROLLBAR */
+.scrollbar {
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* Firefox, chrome, edge */
+    scrollbar-width: thin;
+}
+
+/* Safari and others */
+.scrollbar::-webkit-scrollbar {
+    width: 0.5em;
+}
+
+/*
+    Footer
+*/
+footer {
+    background-color: #394a6d;
+    color: white;
+    font-size: 0.8rem;
+}
+
+footer>p {
+    color: white;
+    font-size: 0.8rem;
+    margin: 0;
+    padding: 5px;
+}

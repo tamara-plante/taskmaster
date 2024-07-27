@@ -1,0 +1,43 @@
+<!-- Branding -->
+<div id="logo" class="d-md-flex flex-md-column mb-md-4">
+    <img src="images/logo-image.svg" alt="logo image taskmaster" class="mb-md-3 mx-md-auto">
+    <img src="images/logo-text.svg" alt="logo text taskmaster">
+</div>
+<hr class="mb-3">
+<h3 class="mb-1">Where focus goes, energy flows.</h3>
+
+<!-- Error messages -->
+<div id="error-msg" class="alert alert-warning my-2 py-auto">{{ "<br>", @errors | implode }}</div>
+
+<!-- Form: Login -->
+<form id="login" method="POST" action="">
+
+    <!-- Input: Username -->
+    <div class="form-group mb-3">
+        <label for="username" class="form-label m-0">Username</label>
+        <input 
+            type="text" 
+            id="username" 
+            name="username" 
+            class="form-control" 
+            placeholder="Enter your username" 
+            value="{{ isset(@username) ? @username : '' }}" 
+            required>
+    </div>
+
+    <!-- Input: Password -->
+    <div class="form-group mb-3">
+        <label for="password" class="form-label m-0">Password</label>
+        <input 
+            type="password" 
+            id="password" 
+            name="password" 
+            class="form-control"
+            placeholder="Enter your password" 
+            required>
+    </div>
+    <button type="submit" class="w-100 mt-3 mb-2 p-2">Login</button>
+</form>    
+
+<!-- Sign up -->
+<p>Don't have an account? <a href="{{ @BASE }}{{ 'register' | alias }}">Register.</a></p>

@@ -1,0 +1,206 @@
+<include href="includes/head.html">
+
+        <div class="{{ @container }} container-fluid d-flex flex-column vh-100 p-0">
+
+            <!-- Navigation -->
+            <include href="includes/header.html">
+
+            <!-- Main todo container -->
+            <div class="h-100 container-fluid d-flex align-items-center mb-md-3">
+                <div id="taskmaster-container" class="container-fluid h-100 m-0 p-0"><!-- col-11 col-lg-9 col-xl-8 -->
+                    <div class="row h-100">
+
+                        <!-- Lists -->
+                        <aside class="d-none d-md-block offset-lg-1 offset-xl-2 offset-xxl-3 col-md-5 col-lg-4 col-xl-3 col-xxl-2 px-0">
+                            <div class="bg-color">
+                                <!--  list creation input field  -->
+                                <form action="{{ @BASE }}{{ 'rootList' | alias }}" method="POST" class="p-4 pt-md-5">
+                                    <fieldset class="d-flex flex-column mx-auto text-center">
+                                        <legend class="ms-2">Create list</legend>
+                                        <div class="input-wrapper d-flex align-items-center justify-content-center p-2">
+                                            <input type="text" id="list-name" name="title" title="Create List" class="px-2" autocomplete="off">
+                                            <input type="submit" class="btn-add fa" value="&#x2b">
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            
+                                <!-- List Recent -->
+                                <div id="lists-recent">
+                                    <h5 class="ms-4 px-2">Recent</h5>
+                                    <ul>
+                                        <repeat group="{{ @listsRecent }}" value="{{ @list }}">
+                                            <a href="{{ @BASE }}{{ 'getList', ['id' => @list['id']] | alias }}" class="text-decoration-none">
+                                                <li data-id="{{ @list['id'] }}" class="list- d-flex align-items-center px-4 p-1">
+                                                    <span class="list-title ms-4">{{ @list["title" ]}}</span>
+                                                </li>
+                                            </a>
+                                        </repeat>
+                                    </ul>
+                                </div>
+                                <hr>
+                            </div>
+
+                            <!-- List Items -->
+                            <div id="lists-container" class="my-3">
+                                <ul id="sortable" aria-dropeffect="move" class="scrollbar">
+                                    <repeat group="{{ @lists }}" value="{{ @list }}">
+                                        <li id="l-{{ @list['id'] }}" data-id="{{ @list['id'] }}" data-url="{{ @BASE }}{{ 'getList', ['id' => @list['id']] | alias }}" class="list-item {{ @selectedId == @list['id'] ? 'active' : '' }} d-flex align-items-center">
+                                            <span class="sortable-handle ms-2 p-2"><i class="fas fa-grip-vertical list-icon list-grip"></i></span>
+                                            <span class="list-title w-75 p-2 text-decoration-none">{{ @list["title"] }}</span>
+                                            <div class="menu text-end me-3">
+                                                <button type="button" title="Delete List" class="list-icon list-delete"><i class="fa-solid fa-trash-can"></i></button>
+                                            </div>
+                                        </li>
+                                    </repeat>
+                                </ul>
+                                <!-- scroll indicator for mobile -->
+                                <div class="scroll-indicator d-md-none"><div class="scroll-indicator-icon"></div></div>
+                            </div>
+                            
+                        </aside>
+                        
+                        <!--  main content of the to-do manager -- all tasks are listed here  -->
+                        <main class="content col col-md-7 col-lg-6 col-xl-5 col-xxl-4 py-md-4 p-0">
+                            
+                            <!--  title of the currently selected list  -->
+                            <form id="list-title-form" action="{{ @BASE }}{{ 'editListTitle' | alias }}" data-id="{{ @selectedId }}" method="POST" class="px-4">
+                                <input 
+                                    maxlength="35"
+                                    type="text" 
+                                    name="title" 
+                                    title="Edit Title" 
+                                    value="{{ @selectedTitle ?? 'TODO' }}" 
+                                    class="w-100 ps-2" 
+                                    autocomplete="off" 
+                                    spellcheck="false"
+                                >
+                            </form>
+
+                            <!--  tabs to control which tasks are displayed (all, active, completed, priority) -->
+                            <div class="d-flex flex-column flex-md-row w-100 mb-4 px-4 justify-content-between">
+                                <!-- Filter by all, by active, by completed-->
+                                <div id="modes" class="d-flex justify-content-between">
+                                    <a href="{{ @BASE }}{{ 'appListMode', ['mode' => 'all'] | alias }}" class="{{ @mode == 'all' ? 'active' : ''}} p-3">All</a>
+                                    <a href="{{ @BASE }}{{ 'appListMode', ['mode' => 'active'] | alias }}" class="{{ @mode == 'active' ? 'active' : ''}} p-3">Active</a>
+                                    <a href="{{ @BASE }}{{ 'appListMode', ['mode' => 'completed'] | alias }}" class="{{ @mode == 'completed' ? 'active' : ''}} p-3">Completed</a>
+                                </div>
+
+                                <div id="options" class="d-flex justify-md-content-end">
+                                    <!-- By Priority button -->
+                                    <check if="{{ @byPriority }}">
+                                        <true><set priorityCheck="checked"></set></true>
+                                        <false><set priorityCheck=""></set></false>
+                                    </check>
+                                    <form id="priority-form" action="{{ @BASE }}{{ 'appListPriority' | alias }}" method="GET" class="d-flex form-btn align-items-center me-2">
+                                        <input type="checkbox" {{ @priorityCheck }} class="btn-check" id="priority-btn">
+                                        <label class="btn btn-outline-secondary" for="priority-btn">By Priority</label>
+                                    </form>
+                                    <!-- By Due Date button -->
+                                    <check if="{{ @byDueDate }}">
+                                        <true><set dueDateCheck="checked"></set></true>
+                                        <false><set dueDateCheck=""></set></false>
+                                    </check>
+                                    <form id="due-date-form" action="{{ @BASE }}{{ 'appListDueDate' | alias }}" method="GET" class="d-flex form-btn align-items-center">
+                                        <input type="checkbox" {{ @dueDateCheck }} class="btn-check" id="due-date-btn">
+                                        <label class="btn btn-outline-secondary" for="due-date-btn">By Due Date</label>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <!--  task items  -->
+                            <div id="tasks-container" class="ps-4 pb-5">
+                                <ul class="scrollbar">
+                                    <repeat group="{{ @tasks }}" value="{{ @task }}">
+                                        <check if="{{ @task['is_completed'] == 1}}">
+                                            <true><set taskCompleted="completed"></set></true>
+                                            <false><set taskCompleted=""></set></false>
+                                        </check>
+                                        <li id="t-{{ @task['id'] }}" data-id="{{ @task['id'] }}" data-url="{{ @BASE }}{{ 'getTask', ['id' => @task['id']] | alias }}" class="d-flex w-100 mb-4">
+                                            <div>
+                                                <div class="marker priority priority-{{ @task['priority'] }} {{ @taskCompleted }}"><i class="fa-solid fa-circle"></i></div>
+                                                <div class="marker checkmark {{ @taskCompleted }}"><i class="fa-solid fa-circle-check"></i></div>
+                                            </div>
+                                            <div class="d-flex flex-column w-100">
+                                                <p class="mb-2 task-content {{ @taskCompleted }}">{{ @task["content"] | nl2br }}</p>
+                                                <div class="d-flex">
+                                                    <div class="{{ @taskCompleted }} {{ @task['due_date'] != '' ? 'due-date' : '' }} task-date justify-content-center align-items-center rounded-5">{{ @task["due_date"] }}</div>
+                                                </div>
+                                            </div>
+                                            <div class="text-center">
+                                                <!-- TODO: Edit button should open the task-add-container with prefilled information?-->
+                                                <button type="button" title="Edit Task" class="{{ @taskCompleted }} task-icon task-edit"><i class="fa-solid fa-pen-to-square"></i></button>
+                                                <button type="button" title="Delete Task" class="task-icon task-delete"><i class="fa-solid fa-trash-can"></i></button>
+                                            </div>
+                                        </li>
+                                    </repeat>
+                                </ul>
+                            </div>
+
+                            <!-- Task add dialog -->
+                            <div id="task-add-dialog" class="w-100">
+                                <form action="{{ @BASE }}{{ 'rootTask' | alias }}" method="POST" id="task-add-form" class="col-11 col-md-8 align-items-center mx-auto pt-3 px-3 rounded-2">
+                                    <input type="hidden" name="id">
+                                    <div class="d-flex mb-2">
+                                        <div id="task-add-priority" class="input-group input-group-sm me-md-2">
+                                            <label class="input-group-text">Priority</label>
+                                            <select class="form-control" name="priority" title="priority">
+                                                <option value="0">None</option>
+                                                <option value="1">Low</option>
+                                                <option value="2">High</option>
+                                            </select>
+                                        </div>
+                                        <div id="task-add-due-date" class="input-group input-group-sm">
+                                            <label class="input-group-text" for="add-due-date">Due date</label>
+                                            <input type="date" class="form-control" id="add-due-date" name="due_date">
+                                        </div>
+                                    </div>
+                                    <!-- Create task -->
+                                    <div id="task-add-content" class="input-group input-group-sm h-75 mb-3">
+                                        <label class="input-group-text" for="add-content">Task</label>
+                                        <textarea class="form-control" id="add-content" name="content" required></textarea>
+                                    </div>
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <button type="submit" title="submit" class="btn-add me-3 fa"><i class="edit fa-solid fa-check"></i><i class="add fa-solid fa-plus"></i></button>
+                                        <input type="reset" class="btn-add fa" value="&#xf12d">
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- Add task button -->
+                            <button id="task-add-btn" type="button" title="Toggle Add Task" class="btn-add text-center">
+                                <i class="close fa-solid fa-xmark"></i>
+                                <i class="open fa-solid fa-plus"></i>
+                            </button>
+
+                            <div id="task-active-count" class="d-flex text-center justify-content-center align-items-center px-3">
+                                <span class="text-truncate">{{ @selectedCount }}</span>
+                            </div>
+                            
+                        </main>
+
+                    </div>
+                </div>
+            </div>
+            <include href="includes/footer.html">
+        </div>
+
+        <include href="includes/scripts.html">
+        <script>
+            $( function() {
+                $("#sortable").sortable({ 
+                    axis: "y",
+                    handle: ".sortable-handle",
+                    stop: function(event, ui) {
+
+                        const li = ui.item;
+                        const selectedId = li.data("id");
+                        const sorted = $("#sortable").sortable("toArray", { attribute: "data-id" });
+                        const newPosition = sorted.indexOf(selectedId.toString());
+
+                        $.get(`${li.data("url")}/${newPosition}`);
+                    }
+                });
+            });
+            </script>
+    </body>
+</html>

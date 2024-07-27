@@ -1,0 +1,50 @@
+7/9
+Wireframe done for the contact us page.
+
+7/10
+Mockup done for the contact us page.
+
+7/11
+Built the html, css for the contact us page.
+
+7/12
+Built the html, css for the contact us page.
+
+7/13
+Built the html, css for the contact us page.
+
+7/14
+Finalize the html and css for the contact us page.
+
+7/15
+Set up header and footer using Fatfree framework
+
+7/16
+Started working on profile update feature
+
+7/17
+working on profile update feature
+
+7/18
+Implemented the basic update username and delete account feature
+
+7/19
+working on update profile
+
+7/20
+working on update profile
+
+7/21
+finalize update profile, set up the upload avatar
+
+7/22
+finalize upload avatar, set up username and avatar in header, improve header UX
+
+7/23
+add a flavicon, improve dropdown animation, improve contact us UX
+
+7/24
+complete contact us page with description and screenshots, improve background display, improve mobile responsiveness, final documentation
+
+7/25
+final clean up, final documentation

@@ -1,0 +1,40 @@
+<header class="sticky-top mb-md-5">
+    <nav class="navbar navbar-expand-md px-2 px-md-4">
+        <div class="logo-container">
+            <img src="images/logo-image.svg" alt="TaskMaster Logo" class="navbar-logo">
+            <img src="images/logo-text.svg" alt="TaskMaster" class="navbar-logo-text">
+        </div>
+
+        <!-- Responsive navbar toggler for smaller screens -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#main-nav"
+            aria-controls="main-nav" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Offcanvas navigation menu for mobile devices -->
+        <div class="offcanvas offcanvas-end p-2" tabindex="-1" id="main-nav">
+            <div class="offcanvas-header">
+                <button type="button" class="btn-close fs-3" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end align-items-center flex-grow-1">
+                    <!-- Login/Sign up -->
+                    <li class="nav-item me-md-5">
+                        <a class="nav-link {{ @ALIAS == 'home' ? 'active' : '' }}"
+                            href="{{ @BASE }}{{ 'home' | alias }}">Login/Sign Up</a>
+                    </li>
+
+                    <!-- Contact us -->
+                    <li class="nav-item me-md-5">
+                        <a class="nav-link {{ @ALIAS == 'contactUs' ? 'active' : '' }}"
+                            href="{{ @BASE }}{{ 'contactUs' | alias }}">Contact
+                            us</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+</header>

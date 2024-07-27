@@ -1,0 +1,104 @@
+<header class="sticky-top mb-md-3">
+    <nav class="navbar navbar-expand-md px-2 px-md-4">
+
+        <!-- Logo and branding area -->
+        <a class="navbar-brand" href="{{ @BASE }}{{ 'app' | alias }}">
+            <div class="logo-container">
+                <img src="images/logo-image.svg" alt="TaskMaster Logo" class="navbar-logo">
+                <img src="images/logo-text.svg" alt="TaskMaster" class="navbar-logo-text">
+            </div>
+        </a>
+
+        <!-- Responsive navbar toggler for smaller screens -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#main-nav"
+            aria-controls="main-nav" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Offcanvas navigation menu for mobile devices -->
+        <div class="offcanvas offcanvas-end p-2" tabindex="-1" id="main-nav">
+            <div class="offcanvas-header">
+                <span>Hi, <strong>{{ @username }}</strong></span>
+                <button type="button" class="btn-close fs-3" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end align-items-center flex-grow-1">
+                    <!-- Navigation link for the to-do list -->
+                    <li class="nav-item me-md-3 me-lg-5">
+                        <a class="nav-link {{ @ALIAS == 'app' ? 'active' : '' }}"
+                            href="{{ @BASE }}{{ 'app' | alias }}">TO-DO list</a>
+                    </li>
+                    <!-- Navigation link for the contact page -->
+                    <li class="nav-item me-md-4 me-lg-5">
+                        <a class="nav-link {{ @ALIAS == 'contactUs' ? 'active' : '' }}"
+                            href="{{ @BASE }}{{ 'contactUs' | alias }}">Contact us</a>
+                    </li>
+                    <!-- Navigation link for update profile -->
+                    <li class="nav-item d-md-none me-md-5">
+                        <a class="update-account dropdown-item nav-link"
+                            href="{{ @BASE }}{{ 'profile' | alias }}">Update
+                            account</a>
+                    </li>
+                    <!-- Navigation link for delete account -->
+                    <li class="nav-item d-md-none me-md-5">
+                        <a id="delete-account-mobile" class="dropdown-item"
+                            href="{{ @BASE }}{{ 'profileDelete' | alias }}">Delete account</a>
+                    </li>
+                    <!-- Navigation link for log out -->
+                    <li class="nav-item d-md-none me-md-5">
+                        <a class="logout dropdown-item nav-link" href="{{ @BASE }}{{ 'logout' | alias }}">Log
+                            out</a>
+                    </li>
+
+                    <!-- Display username, visible only on medium screens and up -->
+                    <li class="nav-item d-none d-md-block me-md-3 mb-5 mb-md-0 text-center">
+                        <span>Hi, <strong>{{ @username }}</strong></span>
+                    </li>
+                    <!-- User avatar and dropdown menu for account management -->
+                    <li class="nav-item dropdown d-none d-md-block text-center me-2">
+                        <div class="nav-link">
+                            <div class="avatar-wrapper">
+                                <img src="../{{ @avatar }}" alt="avatar picture" class="avatar-circle">
+                            </div>
+                        </div>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <!-- Navigation link for update profile -->
+                            <li>
+                                <a class="update-account dropdown-item" href="{{ @BASE }}{{ 'profile' | alias }}">Update
+                                    account</a>
+                            </li>
+                            <!-- Navigation link for delete account -->
+                            <li>
+                                <a id="delete-account-desktop" class="dropdown-item"
+                                    href="{{ @BASE }}{{ 'profileDelete' | alias }}">Delete account</a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <!-- Navigation link for log out -->
+                            <li>
+                                <a class="logout dropdown-item" href="{{ @BASE }}{{ 'logout' | alias }}">Log out</a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<!-- Linking jQuery and Bootstrap for functionality -->
+
+    <script>
+        // JavaScript for handling account deletion with confirmation
+        document.querySelectorAll('#delete-account-mobile, #delete-account-desktop').forEach(function (element) {
+            element.addEventListener('click', function (event) {
+                if (!confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
+                    event.preventDefault();
+                }
+            });
+        });
+
+    </script>

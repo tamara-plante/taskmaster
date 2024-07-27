@@ -1,0 +1,17 @@
+# apache configuration file
+
+RewriteEngine On
+
+# rewrite as long as it's not a real file
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# rewrite as long as it's not a directory
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# rewrite as long as it's not a symbolic link
+RewriteCond %{REQUEST_FILENAME} !-l
+
+# rewrite all of them to index.php.
+# L = last rule to follow
+# QSA = give the query string
+RewriteRule .* index.php [L,QSA]

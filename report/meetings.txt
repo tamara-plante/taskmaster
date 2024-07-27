@@ -1,0 +1,59 @@
+7/9
+This was the first team meeting. We discussed the project, and decided to split the initial workflow tasks. Evan will work on the ER diagram. Qiutian will work on all wireframes needed. Tamara will work on the to-do wireframe.
+We shared a few existing layouts to get some ideas for the layout, decided on our pages and decided the initial database structure. We discussed additional features, Qiutian brought up task priority. Evan and Tamara discussed task order (drag and drop). Tamara brought up the possibility of implementing a calendar or a special list - github todos as additional features.
+
+Next meeting: 7/10 after class.
+What to do: wireframes of the pages, ER diagram, think of a project name.
+
+
+7/10
+Picked the wireframes, decided who would do which html. Evan will do the to-do, Qiutian will do the contact us and Tamara will do the login/sign up. The mockups are being worked on to decide font/colors/images. The project name was decided. TaskMaster. Updated the ER diagram with the added list order option.
+
+Next meeting: 7/11 short meeting to decide on font/colors/images
+What to do: mockups, logo.
+
+
+7/11
+We got the mockups done for the initial workflow which also includes the newly designed logo by Tamara. We will try to do a scrum daily, while coding the html, css, js part of the website.
+
+Next meeting: next day, scrum
+What to do: html, css, js of our assigned page.
+
+
+7/12
+Daily scrum. Tamara completed the login page and will look to implement the FatFree Framework after completing the sign up page. Evan is looking more into the framework as well.
+
+Next meeting: 7/14, scrum
+What to do: html, css, js of our assigned page. Look to implement the FatFree Framework.
+
+
+7/15
+Qiutian is working on the contact us header and footer. Adjusting for php. Tamara implemented the FatFree Framework and completed the login/register in the framework.
+Tamara is setting up to do the to-do list. Qiutian is looking into profile modification.
+
+Next meeting: 7/16 or 7/17, scrum
+What to do: html, css, js for the project. To-do list page, profile modification dialog.
+
+
+7/16 - 7/18
+Qiutian is working on the profile management, basic update and delete account but there's a few things to fix. Afterwards, Qiutian will try to implement the update profile picture, 
+Tamara is working on the todo lists, creating and completing tasks. No issues encountered so far. If there's time, do more css and add the rename list option.
+
+7/19 - 7/20
+As a team, we restructured some of Qiutian's includes to remove styling and scripts and made the css links dynamic. Qiutian is working on updating profile. Tamara is workking on reworking
+the routing, adding beforeRoute for repeat login verification and adding more of the todo features such as priority.
+
+7/21
+Meeting with Steph. Everything is moving along well. 
+
+7/22
+Tamara is working on refining existing code.
+
+7/23
+Tamara is working on supporting edit task and maybe list ordering.
+
+7/24
+Tamara worked on the edit task, order by due date, and added an active task count. Qiutian will be working on the documentation and fix contact us screenshots.
+
+7/25
+Tamara is working on adding database validations. Qiutian is working on project documentation.

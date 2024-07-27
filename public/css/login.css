@@ -1,0 +1,120 @@
+.splash-img {
+    background-image: url("../images/splash1.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+/*
+    Main container on this layout
+*/
+main {
+    background-color: #F3F3F3;
+    overflow-y: auto;
+}
+
+button,
+a[role=button] {
+    border: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+a[role=button] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button,
+input[type=text],
+input[type=password],
+input[type=email],
+a[role=button] {
+    border-radius: 60px;
+    height: 48px;
+}
+
+input[type=text],
+input[type=password],
+input[type=email] {
+    border: 1px solid darkgray;
+    text-align: center;
+}
+
+/*
+    Form container for login/sign up
+*/
+.form-container {
+    width: 100%;
+    max-width: 340px;
+}
+.form-container hr {
+    border-top-width: 2px;
+    opacity: 100%;
+}
+.form-container h3 {
+    font-size: 1.25rem;
+}
+
+/* Logo image */
+#logo img:nth-of-type(1) {
+    width: 20%;
+}
+/* Logo text */
+#logo img:nth-of-type(2) {
+    width: 78%;
+}
+
+#error-msg {
+    border-radius: 5px;
+    padding: 10px 0;
+    font-size: 0.9rem;
+    min-height: 35px;
+    visibility: hidden;
+}
+
+form {
+    width: 100%;
+}
+form label {
+    font-weight: 500;
+    text-transform: lowercase;
+}
+form button[type=submit] {
+    background-color: #0197BC;
+    color: white;
+}
+/* 
+    Don't have an account or
+    have an account paragraph
+*/
+form + p > a,
+form + p > a:link,
+form + p > a:visited {
+    font-weight: 600;
+    color: #0197BC;
+}
+form + p > a:hover,
+form + p > a:active {
+    color: #394A6D;
+}
+
+
+#contact-us-btn {
+    width: 200px;
+    background-color: #394A6D;
+    color: white;
+}
+
+
+
+
+@media (min-width: 768px) {
+
+    /* Logo image and logo text */
+    #login-container #logo img:nth-of-type(1),
+    #login-container #logo img:nth-of-type(2) {
+        width: unset;
+    }
+}

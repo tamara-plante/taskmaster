@@ -1,0 +1,34 @@
+<include href="includes/head.html">
+    
+        <div class="container-fluid h-100">
+            <div class="row h-100">
+
+                <!-- Splash image -->
+                <aside class="splash-img d-none d-md-block col-md-5"></aside>
+
+                <!-- Form area: Login/Sign up  -->
+                <main id="{{ @container }}" class="col col-md-7 d-md-flex flex-column h-100">
+                    <!-- center vertically with flex parent -->
+                    <div class="form-container m-auto p-2 text-center">
+                        
+                        <!-- Form: Login/Sign up -->
+                        <include href="{{ @form }}">
+
+                        <!-- Contact us -->
+                        <a href="{{ @BASE }}{{ 'contactUs' | alias }}" role="button" id="contact-us-btn" class="text-decoration-none my-3">Contact us</a>
+
+                    </div>
+                </main>
+                
+            </div>
+        </div>
+
+        <include href="includes/scripts.html">
+        <script>
+            $(function() {
+                // Toggle visibility error message div
+                $("#error-msg").css("visibility", ($("#error-msg").text().length > 0) ? "visible" : "hidden");
+            })
+        </script>
+    </body>
+</html>
